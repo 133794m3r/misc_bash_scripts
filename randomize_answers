@@ -1,5 +1,4 @@
 #!/bin/bash
-#sorted=$(echo $1 | sed -e $'s/,/\\\n/g' | sort -R | tr '\n' ', a' | sed 's/.$//');
 function randomize(){
 for (( i=1; i<=$1; i++ ))
 do

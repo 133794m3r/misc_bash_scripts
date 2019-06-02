@@ -1,0 +1,6 @@
+#/bin/sh
+timestamp=$(date +%F);
+cd '/home/macarthur/.purple/'
+tar -zcf "/home/macarthur/messages_and_such/$timestamp-pidgin.tgz" "logs/";
+cd ..
+tar -zcf "/home/macarthur/backups/$timestamp-crimson_strife.tgz" "crimson_strife/";

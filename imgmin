@@ -1,0 +1,14 @@
+#!/bin/bash
+find -iname "*.jpg" > tmp;
+sed -i "s/\.\///" tmp;
+
+FILENAME=tmp;
+while read line
+do
+	  echo $line;
+      #imgmin "$line" "$line";
+#      imgmin "$line" "$line-1";
+#      mv "$line-1" "$line";
+      jpegtran -copy none -optimize -progressive "$line" > "$line-opt";
+      mv "$line-opt" "$line";
+done < $FILENAME

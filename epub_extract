@@ -1,0 +1,14 @@
+#!/bin/bash
+find -iname *.epub > tmp;
+
+#find -iname *.nds >> tmp
+sed -i "s/\.\///" tmp;
+tmp='';
+FILENAME=tmp;
+while read line
+do
+    echo "$line";
+	tmp=$(echo "$line"|sed -e 's/\.epub//');
+	echo "$tmp";
+	#unzip "$line" -d "$tmp"
+done < tmp

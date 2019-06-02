@@ -1,0 +1,29 @@
+#!/bin/bash
+
+blocks=2097152      # 2^22, must be dividable by 2^8 (max i) = 256
+block_size=512
+
+result=""
+for i in {1..4}
+do
+  block_count=512
+
+  for j in {1..8}
+  do
+    echo -n "Benchmark with block count: $block_count, block size: $block_size: "
+    execution_time=`/usr/bin/time 2>&1 -f "%Es" badblocks >/dev/null -w -b $block_size -c $block_count -t $(( $blocks - $block_count )) $1 $blocks`
+    status=$?
+    if [ $status -eq 0 ]; then
+      result=`echo -e "$result""\n""$execution_time: badblocks -b $block_size -c $block_count"`
+      echo "$execution_time"
+    fi
+
+    block_count=$(( $block_count * 2 ))
+  done
+
+  block_size=$(( $block_size * 2 ))
+  blocks=$(( $blocks / 2 ))
+done
+
+echo "Result:"
+echo "$result" | sort --numeric-sort

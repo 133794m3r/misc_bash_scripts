@@ -1,0 +1,2 @@
+#!/bin/bash
+dpkg-deb --new -S extreme -z 9 -Z xz -b $1 $2;

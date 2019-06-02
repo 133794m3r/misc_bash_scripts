@@ -1,0 +1,9 @@
+#!/bin/dash
+FILENAME=tmp;
+while read line
+do
+advzip -q -a -4 "$line.zip" "$line";
+wine deflopt "$line.zip"
+./defluff <"$line.zip" > "$line.zip-1";
+mv "$line.zip-1" "$line.zip";
+done < tmp

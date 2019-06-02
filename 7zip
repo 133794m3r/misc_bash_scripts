@@ -1,0 +1,3 @@
+#!/bin/sh
+
+advzip  -a -4 "$2.zip" $1

@@ -1,0 +1,6 @@
+#!/bin/bash
+variable=$(date -u);
+project_location="/home/macarthur/crimson_strife";
+commit_logs="/home/macarthur/test";
+cd $project_location;
+git commit . -m "Daily commit on $variable";

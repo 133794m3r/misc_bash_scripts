@@ -1,0 +1,5 @@
+#!/bin/dash
+qpdf --linearize "$1" "$1-1";
+mv "$1-1" "$1";
+pdftk "$1" output "$1-1" compress;
+mv "$1-1" "$1";

@@ -1,0 +1,11 @@
+#!/bin/sh
+str="${1:0:-4}"
+mkvextract tracks "$str.mkv" 0:/tmpdownload/video.h264;
+mkvextract tracks "$str.mkv" 1:/tmpdownload/audio.ac3;
+#taskset -c 2 avconv -i /tmpdownload/audio.ac3 -f mp3 pipe: | cat > /tmpdownload/audio;
+MP4Box -add /tmpdownload/video.h264 -add /tmpdownload/audio /tmpdownload/"$str.mp4";
+sleep 1;
+echo 'done';
+#rm -rfv /tmpdownload/video.h264 /tmpdownload/audio.mp3 /tmpdownload/audio.ac3;
+sleep 1;
+#mv "/tmpdownload/$str.mp4" /media/MOVIES/gh1/"$str.mp4";

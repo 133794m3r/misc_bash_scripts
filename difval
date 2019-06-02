@@ -1,0 +1,4 @@
+#!/bin/bash
+cd crimson_strife;
+git diff --stat;
+

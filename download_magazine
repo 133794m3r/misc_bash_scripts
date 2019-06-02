@@ -1,0 +1,2 @@
+#!/bin/bash
+curl $1/img_[0-$2]_1.jpg -o '#1.jpg'

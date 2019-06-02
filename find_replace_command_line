@@ -1,0 +1,1 @@
+grep -RleI 'pattern'  | xargs -0 -l  sed -e 's/old/new/g';

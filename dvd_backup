@@ -1,0 +1,4 @@
+#!/bin/dash
+ddrescue -n -B -b 2048 -r100 /dev/dvd /tmpdownload/$1.iso logfile.txt
+#mkdir $1;
+dvdbackup -M -i /tmpdownload/$1.iso -o $1;

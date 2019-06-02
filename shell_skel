@@ -1,0 +1,7 @@
+#!/bin/bash
+find -iname *.
+sed -i "s/\.\///" tmp;
+while read line
+do
+
+done < tmp;

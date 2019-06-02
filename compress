@@ -1,0 +1,4 @@
+#!/bin/dash
+#7z a -t7z "/tmpdownload/$1".7z -m0=lzma2 -mfb=96 -md=192m -mx=9 -mlc=4 -mmc=128 -mmt=2 "$1"
+taskset -c 2,3 7z a -t7z "/tmpdownload/$1".7z -m0=lzma2 -mfb=96 -md=192m -mx=9 -mlc=4 -mmc=128 -mmt=2 "$1"
+7z t "/tmpdownload/$1".7z

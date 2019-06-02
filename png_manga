@@ -1,0 +1,15 @@
+#!/bin/bash
+str='';
+let a=0;
+FILENAME=tmp;
+while read line
+do
+str=${line::-4};
+line=$str;
+echo "$line";
+convert -quality 00 -type Grayscale -colors 32 "$line.jpg" "$line.png";
+zopflipng -my "$line.png" "1-$line.png"
+mv "1-$line.png" "$line.png";
+let a=a+1;
+sleep 0.125;
+done < $FILENAME

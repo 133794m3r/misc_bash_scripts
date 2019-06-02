@@ -1,0 +1,8 @@
+#!/bin/sh
+sed -n 's/\<span\ class\=\"searchterm\-headword\">/a\ name=\"/g' $1 > tmp;
+sed -n 's/<\/span>headword\">/\"\/>/g' tmp > tmp1;
+sed -n 's/<\/span>//g' tmp1 > tmp;
+sed -n 's/<a\ href\=\"dictionary\:.*\">//g' tmp > tmp1;
+sed -n 's/<a\/>//g' tmp1 > tmp;
+sed  -n 's/<div\ .*.\">\ /\<w\>\<p\>/g' tmp > tmp1;
+sed -n 's/<\/div>/<\/p><\/w>/g' tmp1 > tmp2;

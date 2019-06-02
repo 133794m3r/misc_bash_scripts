@@ -1,0 +1,3 @@
+#!/bin/bash
+cd /home/macarthur/crimson_strife/
+git commit .

@@ -1,0 +1,3 @@
+#!/bin/bash
+#pdf to png converter
+gs -dNOPAUSE -dbatch -sDEVICE=JPEG -r200 -sPAPERSIZE=archD -sOutputFile=$line/pg-%d.png $line;

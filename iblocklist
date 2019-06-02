@@ -1,0 +1,40 @@
+#!/bin/bash
+case "$1" in
+        -h)
+	echo "some random help";
+        echo "some other thing";
+	exit;;
+        -c)
+        cd /home/macarthur/.config/transmission/blocklists
+        rm bt_level1 bt_level2 bt_level3 bt_edu bt_hijacked bt_dshield bt_proxy bt_bad tor
+        echo "cleaned non binaries";
+        exit;;
+esac
+if [[ -z "$1" ]]; then
+cd Downloads
+wget  -v -O bt_level1.gz http://list.iblocklist.com/?list=bt_level1 
+wget -v -O bt_level2.gz http://list.iblocklist.com/?list=bt_level2 
+wget -v -O bt_level3.gz http://list.iblocklist.com/?list=bt_level3 
+wget -v -O bt_edu.gz http://list.iblocklist.com/?list=bt_edu 
+wget -v -O bt_hijacked.gz http://list.iblocklist.com/?list=bt_hijacked 
+wget -v -O bt_dshield.gz http://list.iblocklist.com/?list=bt_dshield
+wget -v -O bt_proxy.gz http://list.iblocklist.com/?list=bt_proxy
+wget -v -O bt_bad.gz http://list.iblocklist.com/?list=bt_templist
+wget -v -O tor.gz http://list.iblocklist.com/?list=tor
+zcat -f -d bt_level1.gz > /home/macarthur/.config/transmission/blocklists/bt_level1
+zcat -f -d bt_level2.gz > /home/macarthur/.config/transmission/blocklists/bt_level2
+zcat -f -d bt_level3.gz > /home/macarthur/.config/transmission/blocklists/bt_level3
+zcat -f -d bt_edu.gz > /home/macarthur/.config/transmission/blocklists/bt_edu
+zcat -f -d bt_hijacked.gz > /home/macarthur/.config/transmission/blocklists/bt_hijacked
+zcat -f -d bt_dshield.gz > /home/macarthur/.config/transmission/blocklists/bt_dshield
+zcat -f -d bt_proxy.gz > /home/macarthur/.config/transmission/blocklists/bt_proxy
+zcat -f -d bt_bad.gz > /home/macarthur/.config/transmission/blocklists/bt_bad
+zcat -f -d tor.gz > /home/macarthur/.config/transmission/blocklists/tor
+rm bt_level1.gz bt_level2.gz bt_level3.gz bt_edu.gz bt_hijacked.gz bt_dshield.gz bt_proxy.gz bt_bad.gz tor.gz
+cd /home/macarthur/.config/transmission/blocklists
+rm *.bin
+cd /home/macarthur
+timestamp=$(date +%F);
+echo "Update Completed on $timestamp" >> last_update
+echo "Update completed on $timestamp";
+fi

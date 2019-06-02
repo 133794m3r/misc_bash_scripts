@@ -1,0 +1,5 @@
+#!/bin/sh
+genisoimage -dvd-video -udf -o /tmpdownload/"$1".iso "$1"
+
+cd /tmpdownload
+mv -v *.iso /media/ext4-128gb/urusei

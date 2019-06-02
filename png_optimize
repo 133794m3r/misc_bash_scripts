@@ -1,0 +1,12 @@
+#!/bin/bash
+find -iname *.png > tmp;
+sed -i "s/\.\///" tmp;
+while read line
+do
+advpng -z -4 $line
+wine deflopt.exe $line
+./defluff <"$line" >"$line-1";
+mv "$line-1" $line;
+done < tmp
+
+

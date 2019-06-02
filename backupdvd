@@ -1,0 +1,2 @@
+#!/bin/dash
+dvdbackup -i /dev/dvd -o $1 -M

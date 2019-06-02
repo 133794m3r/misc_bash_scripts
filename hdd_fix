@@ -1,0 +1,43 @@
+#!/bin/bash
+
+echo 9900 > /proc/sys/vm/dirty_writeback_centisecs 
+echo 6900 > /proc/sys/vm/dirty_expire_centisecs
+echo 'min_power' > '/sys/class/scsi_host/host1/link_power_management_policy';
+echo 'min_power' > '/sys/class/scsi_host/host4/link_power_management_policy';
+echo 'min_power' > '/sys/class/scsi_host/host2/link_power_management_policy';
+echo 'min_power' > '/sys/class/scsi_host/host0/link_power_management_policy';
+echo '0' > '/proc/sys/kernel/nmi_watchdog';
+echo 'auto' > '/sys/bus/i2c/devices/i2c-4/device/power/control';
+echo 'auto' > '/sys/bus/pci/devices/0000:00:1f.5/power/control';
+echo 'auto' > '/sys/bus/pci/devices/0000:00:14.0/power/control';
+echo 'auto' > '/sys/bus/pci/devices/0000:00:14.2/power/control';
+echo 'auto' > '/sys/bus/pci/devices/0000:01:00.3/power/control';
+echo 'auto' > '/sys/bus/pci/devices/0000:00:00.0/power/control';
+echo 'auto' > '/sys/bus/pci/devices/0000:00:1f.3/power/control';
+echo 'auto' > '/sys/bus/pci/devices/0000:0a:00.0/power/control';
+echo 'auto' > '/sys/bus/pci/devices/0000:00:17.0/power/control';
+echo 'auto' > '/sys/bus/pci/devices/0000:09:00.0/power/control';
+echo 'auto' > '/sys/bus/pci/devices/0000:07:00.0/power/control';
+echo 'auto' > '/sys/bus/pci/devices/0000:01:00.0/power/control';
+echo 'auto' > '/sys/bus/pci/devices/0000:00:04.0/power/control';
+echo 'auto' > '/sys/bus/pci/devices/0000:01:00.2/power/control';
+echo 'auto' > '/sys/bus/pci/devices/0000:08:00.0/power/control';
+echo 'auto' > '/sys/bus/pci/devices/0000:00:12.0/power/control';
+echo 'auto' > '/sys/bus/pci/devices/0000:00:1f.0/power/control';
+
+#echo 'auto' > '/sys/bus/usb/devices/1-10/power/control';
+#echo 'auto' > '/sys/bus/usb/devices/2-3/power/control';
+
+
+
+rfkill block bluetooth
+undervolt -t 50 --core -128 --cache -128 --analogio -128 --uncore -128 --gpu -128
+#intel_gpu_frequency -e
+
+
+#cores=$(cat /proc/cpuinfo | grep processor | awk '{print $3}')
+#for core in $cores; do
+#        wrmsr -p${core} 0x1a0 0x4000850089
+#    state=$(rdmsr -p${core} 0x1a0 -f 38:38)
+#        echo "core ${core}: disabled"
+#done

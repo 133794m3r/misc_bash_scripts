@@ -1,0 +1,42 @@
+#!/bin/bash
+let endtime=0;
+tcalc(){
+s=`date +%H%M`       ## Grab time variable with no place padding.
+t=`expr $s / 1`        ## Expr to drop the 0 off time variable for times less than 1000.
+}
+date_diff(){
+    local a=`date --utc --date "$1" +%s`;
+    local b=`date --utc --date "$2" +%s`;
+    local difsec=$(( $b-$a ));
+    local abs=1;
+    if(( $difsec<0 )); then
+    abs=0
+    else
+    abs=1;
+    fi
+    echo $((difsec*abs));
+}
+
+let a=0;
+do_it(){
+endtime=`date_diff $t $2`;
+#endtime=$(( $endtime * 60 ));
+echo $endtime;
+    avconv -i http://nhkwtvglobal-i.akamaihd.net/hls/live/263941/nhkwtvglobal/index_1180.m3u8 -acodec mp3 -vcodec copy -scodec copy -y -loglevel info -t $endtime -f mp4 /tmpdownload/"$3 $a".mp4
+let    a=$a+1;
+}
+tcalc;
+    while [[ $t -lt $2 ]]; do
+        if [[ $t -ge $1 ]]; then
+        echo -e \\033c;
+        echo recording "$3";
+        do_it $1 $2 $3;
+        do_it $1 $2 $3;
+        fi
+        if [[ $a -ge 1 ]]; then
+        sleep 0.1;
+        else
+        sleep 2;
+        fi
+        tcalc;
+    done

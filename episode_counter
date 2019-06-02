@@ -1,0 +1,40 @@
+#!/bin/bash
+change=0;
+showname=0;
+argument_len=$#;
+showfile="show_val";
+i=0;
+for ((i=0; i<=argument_len; ++i))
+do
+case "$1" in
+	-h)
+	echo "Usage: episodes [-{shidar}] [<args>]";
+	echo "		-h: show help.";
+	echo "		-s:<arg> show names episode value";
+	echo "		-i: increment <arg> show's number";
+	echo "		-d: decrease <arg> show's episodes number";
+	echo "		-a: add show <arg> season <arg2> episode<arg3>";
+	echo "		-r: remove show<arg>";
+	echo "		Default option hows all shows";
+	exit;;
+	-s)
+	$showname=$2;;
+        -i)
+        let ++$change;
+        shift;;
+        -d)
+        let --$change;
+        shift;;
+        -a)
+        echo "$2 $3-$4" >> $showfile;
+	cat $showfile;
+        shift;;
+        -r)
+        grep -lI "$2" $showfile . | xargs sed -i "/$2/ d";
+        cat $showfile;
+        shift;;
+esac
+if [[ -z "$1" ]]; then
+  cat $showfile;
+fi
+done

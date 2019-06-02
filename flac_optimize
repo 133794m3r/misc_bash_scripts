@@ -1,0 +1,10 @@
+#!/bin/dash
+find -iname *.flac > tmp;
+#sed -i "s/\.\///" tmp;
+while read line
+do
+#id3v2 -D "$line";
+flac -8 -f "$line" -o "$line"
+#flac -d "$line" -o "$line-1";
+#mv "$line-1" "$line";
+done < tmp

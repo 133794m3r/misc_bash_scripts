@@ -3,11 +3,14 @@ count = 0
 string = "BaCoNscIphErorTHEbacOnIANCiPHeriSameThODoFsTEGaNOGrapHYaMEThoDOfHidIngAsECRetMeSsaGeasOpPOsEdTOaTRUeCiPHeRdEVIseDBYfrancisbAcoNaMessAgeIscoNCeALEDinTHepRESenTatIoNOFTexTratHerthaNiTscoNteNttOenCODeAMEsSaGeeaChlETterOfTHepLAInTextIsrePLAcEDByAgroUpoFfIvEOFtheLEttERSaorBThISrEplACEmentisDoneaccoRDinGtothEalphABeTOFtHeBACOnIANcIpHeRsHoWnbElOwNoTe:ASeCoNdvErSiOnoFBaCoNSCiPhEruSeSAUnIqUecOdEFoREaChlEtTeRiNOtHeRWoRdSiaNdjeAcHHaSItSOwNPaTtErNtHewRiTeRMuStmAkEUsEOftWodIfFeReNttYpEfAcEsfOrtHiSCiPhErAfTeRPrEpArInGAFaLsEMeSsAgEWiThtHesAmENuMbEroFLeTtErSAsaLloFThEAsaNdbSIntHerEaLsEcReTMeSsAgEtWotYpEfAcEsaRecHoSeNoNetORePrEsEnTAsaNdtHeoThErbStHeNEaChlEtTeROftHefAlSemEsSaGemUsTBepReSeNtEdiNThEApPrOpRiAtETyPeFaCeAcCoRdInGTowHeThEriTStAnDsfOraNAOrabTodEcOdEThEMeSsAgEtHerEvErSemEtHoDIsaPpLiEdEaChTyPeFaCe1LeTtEriNThEFaLsEMeSsAgEIsrEpLaCeDWiThaNAAnDEaChTyPeFaCe2LeTtEriSRePlAcEdwItHABtHebAcOnIaNAlPhAbEtiSThEnuSeDTorEcOvErtHeoRiGiNaLMeSsAgEaNymEtHoDOfwRiTiNgtHemEsSaGetHaTAlLoWstWodIsTiNcTRePrEsEnTaTiOnSFoREaChcHaRaCtErcAnbEUsEdfOrtHebAcOncIpHeRbAcOnhImSeLfpRePaReDABiLiTeRaLAlPhAbEtFoRHaNdWrItTeNCaPiTaLAnDSmAlLLeTtErSWiTheAcHHaViNgtWoaLtErNaTiVefOrMsOnETobEUsEdaSAAnDThEOtHeRAsbThIswAspUbLiShEdaSAniLlUsTrAtEdpLaTeiNHiSDeaUgMeNtIssCiEnTiArUmThEAdVaNcEmEnTOflEaRnInGBeCaUsEAnYMeSsAgEOftHerIgHtlEnGtHCaNBeuSeDTocArRytHeeNcOdInGtHesEcReTMeSsAgEIseFfEcTiVeLyhIdDeNInpLaInsIgHtThEFaLsEMeSsAgECaNBeoNAnYToPiCAnDThUscAndIsTrAcTAPeRsOnsEeKiNgtOFiNdtHerEaLMeSsAgE"
 strlen = (len(string)/5)
 z=0;
+out_str='';
 for y in range(strlen):
-
+    print(y)
     for x in range(5):
+        print(x)
         if string[x+z].isupper():
             count = count + (2 ** (4-(x%5)))
-    print(chr(count+97))
+    out_str+=chr(count+97)
     count=0
     z=z+5
+print(out_str);    

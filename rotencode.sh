@@ -1,5 +1,5 @@
 #!/bin/bash
-
+#Macarthur Inbody <mdi2455@email.vccs.edu> 2019- AGPLv3
 function rot_47(){
     local FILENAME=$2;
 
@@ -67,9 +67,9 @@ function rot_n(){
     fi
 local encoded_line='';
 local new_file=$string'-1';
-echo ${!1};
-echo $2;
-echo $1;
+#echo ${!1};
+#echo $2;
+#echo $1;
 while read line
 do
 
@@ -87,15 +87,24 @@ done < $string
 }
 
 function select_rot(){
-    if [ $1 == 'rot_47' ];
-    then
-    rot_47 $2 $3;
-    elif [[ $1 == '-h' ]] || [[ $1 == '' ]];
-    then
-    echo "usage: rotencode.sh [rot_{1-25}|rot_47] [-e|-d] {filename.extension}"
-    else
-    rot_n $1 $2 $3;
-    fi
+#echo $#;
+    case $1 in
+        'rot_47')
+            rot_47 $2 $3;;
+        ''|'-h')
+            echo "usage: rotencode.sh [{1-25}|47] [-e|-d] {filename.extension}";;
+        *)
+            rot_n "rot_$1" $2 $3;;
+    esac;
+    #if [ $1 == 'rot_47' ];
+    #then
+
+#    elif [[ $1 == '-h' ||  $1 == '' ]];
+#    then
+
+#    else
+#    rot_n $1 $2 $3;
+#    fi
 
 
 }

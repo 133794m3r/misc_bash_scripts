@@ -1,0 +1,5 @@
+#!/bin/bash
+sudo echo 'ON' > /proc/acpi/bbswitch
+cat /proc/acpi/bbswitch
+rmmod bbswitch 
+

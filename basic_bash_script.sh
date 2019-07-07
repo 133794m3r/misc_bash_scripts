@@ -1,7 +1,5 @@
 #!/bin/bash
-#a Number guessing game that's riced up written entirely in BASH
-#Macarthur Inbody <mdi2455@email.vccs.edu> 2019-
-#The function declaration syntax.
+
 min=1;
 max=10;
 delay=0.0625;
@@ -71,7 +69,8 @@ while [[ $do_it_again -eq 1 ]]; do
 lucky_number_guesser;
 do_it_again=$?
 done
-slow_print_string $delay 'Goodbye \e[1mDavid\e[0m. I am ready to play a more interesting game when you are.' 1;
+goodbye_david;
+
 return 0;
 }
 function slow_print_string(){
@@ -100,6 +99,15 @@ echo '';
 fi
 return 0;
 }
+function goodbye_david(){
+
+        slow_print_string $delay 'Goodbye '; 
+        echo -en '\e[1m';
+        slow_print_string $delay 'David';
+        echo -en '\e[0m';
+        slow_print_string $delay '.' 1;
+        slow_print_string $delay 'I am ready to play a more interesting game when you are.' 1;
+        }
 function main(){
 local answer='';
 slow_print_string $delay 'Shall we play a game?' 1;
@@ -117,18 +125,11 @@ case $answer in
         slow_print_string $delay 'already been launched';
         echo -ne '\e[0m'
         slow_print_string $delay '.' 1;
-        slow_print_string $delay 'Goodbye'; 
-        echo -en '\e[1m';
-        slow_print_string $delay 'David';
-        echo -en '\e[0m';
-        slow_print_string $delay '.' 1;;
+        goodbye_david;;
+
     *)
     slow_print_string $delay 'Maybe next time.' 1;
-        slow_print_string $delay 'Goodbye ';
-        echo -en '\e[1m';
-        slow_print_string $delay 'David';
-        echo -en '\e[0m';
-        slow_print_string $delay '.' 1;;
+    goodbye_david;;
     
     esac;
 }
